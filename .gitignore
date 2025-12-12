@@ -43,6 +43,7 @@ venv/
 *.zip
 *.tar
 *.tgz
+data/
 
 # Spark / Hadoop temporary / output
 spark-warehouse/
