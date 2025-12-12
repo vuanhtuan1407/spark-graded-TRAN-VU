@@ -1,0 +1,82 @@
+# Docker files
+**/Dockerfile.*.swp
+**/.dockerignore
+**/docker-compose.override.yml
+**/docker-compose.override.*.yml
+**/docker-compose.*.yml
+
+# Docker generated files
+**/docker-compose.override.yml
+**/docker-compose.override.*.yml
+**/docker-compose.override.yml.swp
+**/docker-compose.override.*.yml.swp
+
+# Containers / images / volumes
+**/docker-volume-*/ 
+**/tmp-docker-*/
+
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Virtualenv / Conda
+env/
+venv/
+.venv/
+.env/
+.conda/
+.condarc
+
+# Large data / temp files
+*.csv
+*.tsv
+*.parquet
+*.avro
+*.json
+*.hdf5
+*.log
+*.gz
+*.zip
+*.tar
+*.tgz
+
+# Spark / Hadoop temporary / output
+spark-warehouse/
+*.snappy
+*.checkpoint/
+*.out/
+logs/
+tmp/
+
+
+# VSCode
+.vscode/
+*.code-workspace
+
+# JetBrains (PyCharm, IntelliJ)
+.idea/
+*.iml
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+
+# macOS
+.DS_Store
+
+# Linux
+*.swp
+*.swo
+
+
+# Secrets
+*.key
+*.pem
+*.crt
+*.env

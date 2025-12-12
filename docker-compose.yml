@@ -1,0 +1,61 @@
+services:
+  spark-master:
+    image: spark:python3-java17
+    container_name: spark-master
+    command: bash -c "/opt/spark/sbin/start-master.sh && tail -f /dev/null"
+    environment:
+      - SPARK_MODE=master
+      - SPARK_MASTER_HOST=spark-master
+    ports:
+      - "8080:8080"   # Spark master UI
+      - "7077:7077"   # Master port
+    networks:
+      - spark-net
+    volumes:
+      - ./:/workspace
+
+  spark-worker-1:
+    image: spark:python3-java17
+    container_name: spark-worker-1
+    command: bash -c "/opt/spark/sbin/start-worker.sh spark://spark-master:7077 && tail -f /dev/null"
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark-master:7077
+      - SPARK_WORKER_MEMORY=2G
+      - SPARK_WORKER_CORES=1
+    networks:
+      - spark-net
+    volumes:
+      - ./:/workspace
+
+  spark-worker-2:
+    image: spark:python3-java17
+    container_name: spark-worker-2
+    command: bash -c "/opt/spark/sbin/start-worker.sh spark://spark-master:7077 && tail -f /dev/null"
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark-master:7077
+      - SPARK_WORKER_MEMORY=2G
+      - SPARK_WORKER_CORES=1
+    networks:
+      - spark-net
+    volumes:
+      - ./:/workspace
+
+  python-env:
+    build: 
+      context: .
+      dockerfile: dev-base.Dockerfile
+    container_name: python-env
+    volumes:
+      - ./:/workspace
+    working_dir: /workspace
+    depends_on:
+      - spark-master
+    networks:
+      - spark-net
+    command: tail -f /dev/null
+
+networks:
+  spark-net:
+    driver: bridge
