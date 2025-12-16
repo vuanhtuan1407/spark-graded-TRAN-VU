@@ -17,3 +17,17 @@ docker exec -it python-env /bin/bash
 ```
 
 then run the downloading script above again.
+
+3. Analyse with Spark using JupyterNotebook
+
+First, active docker container `python-env`
+
+```
+docker exec -it python-env /bin/bash
+```
+
+then run the script for active jupyter notebook environment
+
+```
+bash scripts/active-jupyternb.sh
+```

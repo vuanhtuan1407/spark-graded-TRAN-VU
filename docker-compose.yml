@@ -54,6 +54,8 @@ services:
       - spark-master
     networks:
       - spark-net
+    ports:
+      - "8888:8888"   # Jupyter Notebook
     command: tail -f /dev/null
 
 networks:

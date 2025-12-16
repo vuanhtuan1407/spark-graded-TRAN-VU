@@ -23,6 +23,9 @@ __pycache__/
 *.pyd
 *.pyc
 
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
 # Virtualenv / Conda
 env/
 venv/
@@ -43,6 +46,7 @@ venv/
 *.zip
 *.tar
 *.tgz
+*.pdf
 data/
 
 # Spark / Hadoop temporary / output

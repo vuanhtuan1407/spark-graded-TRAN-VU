@@ -24,7 +24,10 @@ RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.
 RUN apt-get update && apt-get install -y google-cloud-cli \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install --no-cache-dir pyspark
+RUN pip3 install --no-cache-dir \
+    pyspark \
+    jupyterlab \
+    ipykernel
 
 WORKDIR /workspace
 
